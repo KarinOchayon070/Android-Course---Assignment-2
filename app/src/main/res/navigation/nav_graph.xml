@@ -3,20 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/blankFragmentOne">
+    app:startDestination="@id/blankFragmentThree">
 
     <fragment
         android:id="@+id/blankFragmentOne"
         android:name="com.example.assignment2.BlankFragmentOne"
         android:label="fragment_blank_one"
-        tools:layout="@layout/fragment_blank_one" >
-        <action
-            android:id="@+id/action_blankFragmentOne_to_blankFragmentTwo"
-            app:destination="@id/blankFragmentTwo" />
-    </fragment>
+        tools:layout="@layout/fragment_blank_one" />
     <fragment
         android:id="@+id/blankFragmentTwo"
         android:name="com.example.assignment2.BlankFragmentTwo"
         android:label="fragment_blank_two"
         tools:layout="@layout/fragment_blank_two" />
+    <fragment
+        android:id="@+id/blankFragmentThree"
+        android:name="com.example.assignment2.BlankFragmentThree"
+        android:label="fragment_blank_three"
+        tools:layout="@layout/fragment_blank_three" >
+        <action
+            android:id="@+id/action_blankFragmentThree_to_blankFragmentTwo"
+            app:destination="@id/blankFragmentTwo" />
+    </fragment>
+    <fragment
+        android:id="@+id/blankFragmentFour"
+        android:name="com.example.assignment2.BlankFragmentFour"
+        android:label="fragment_blank_four"
+        tools:layout="@layout/fragment_blank_four" />
 </navigation>

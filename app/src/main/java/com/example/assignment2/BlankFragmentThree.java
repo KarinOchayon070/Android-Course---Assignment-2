@@ -8,15 +8,14 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link BlankFragmentOne#newInstance} factory method to
+ * Use the {@link BlankFragmentThree#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BlankFragmentOne extends Fragment {
+public class BlankFragmentThree extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,7 +26,7 @@ public class BlankFragmentOne extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public BlankFragmentOne() {
+    public BlankFragmentThree() {
         // Required empty public constructor
     }
 
@@ -37,11 +36,11 @@ public class BlankFragmentOne extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment BlankFragmentOne.
+     * @return A new instance of fragment BlankFragmentThree.
      */
     // TODO: Rename and change types and number of parameters
-    public static BlankFragmentOne newInstance(String param1, String param2) {
-        BlankFragmentOne fragment = new BlankFragmentOne();
+    public static BlankFragmentThree newInstance(String param1, String param2) {
+        BlankFragmentThree fragment = new BlankFragmentThree();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -58,20 +57,21 @@ public class BlankFragmentOne extends Fragment {
         }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_blank_one, container, false);
-        ImageButton [] buttonImages = {view.findViewById(R.id.ImageJoey), view.findViewById(R.id.ImageMonica), view.findViewById(R.id.ImageRachel)};
 
-
-        buttonImages[0].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Navigation.findNavController(view).navigate(R.id.action_blankFragmen_);
-            }
-        });
-        return view;
-    }
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+//                             Bundle savedInstanceState) {
+//        // Inflate the layout for this fragment
+//        View view = inflater.inflate(R.layout.fragment_blank_one, container, false);
+//        //ImageButton buttonImages = view.findViewById(R.id.ImageJoey);
+//
+//
+//        buttonImages.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Navigation.findNavController(view).navigate(R.id.action_blankFragmentThree_to_blankFragmentTwo);
+//            }
+//        });
+//        return view;
+//    }
 }

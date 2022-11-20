@@ -1,8 +1,7 @@
 package com.example.assignment2;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
+//import android.support.annotation.NonNull;
+//import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +19,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     private ArrayList<DataModel> dataSet;
 
     public CustomAdapter(ArrayList<DataModel> dataSet) {
-
         this.dataSet = dataSet;
     }
 
@@ -47,7 +45,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
 
-        View view = LayoutInflater.from(parent.getContext() ).inflate(R.layout.cards_layout , parent ,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_blank_four , parent ,false);
 
         MyViewHolder myViewHolder = new MyViewHolder(view);
 
@@ -62,10 +60,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         ImageView imageView = viewHolder.imageViewIcon;
         CardView cardView = viewHolder.cardView;
 
-        textViewName.setText(dataSet.get(listPosition).getName());
-        textViewVersion.setText(dataSet.get(listPosition).getDescriptionArray());
-        imageView.setImageResource(dataSet.get(listPosition).getImage());
-
+        if(textViewName.getText() != null){
+            textViewName.setText(dataSet.get(listPosition).getName());
+        }
+        if(textViewVersion.getText() != null){
+            textViewVersion.setText(dataSet.get(listPosition).getDescriptionArray());
+        }
+        if(imageView != null){
+            imageView.setImageResource(dataSet.get(listPosition).getImage());
+        }
 
     }
 

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import android.os.Bundle;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.fragment_blank_three);
 
         recycleView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
@@ -52,8 +53,6 @@ public class MainActivity extends AppCompatActivity {
                     MyData.descriptionArray[i],
                     MyData.id_[i],
                     MyData.drawableArray[i]
-
-
             ));
         }
 
