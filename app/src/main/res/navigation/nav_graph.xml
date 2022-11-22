@@ -28,5 +28,12 @@
         android:id="@+id/blankFragmentFour"
         android:name="com.example.assignment2.BlankFragmentFour"
         android:label="fragment_blank_four"
-        tools:layout="@layout/fragment_blank_four" />
+        tools:layout="@layout/fragment_blank_four" >
+        <action
+            android:id="@+id/action_blankFragmentFour_to_blankFragmentTwo"
+            app:destination="@id/blankFragmentTwo" />
+        <action
+            android:id="@+id/action_blankFragmentFour_to_blankFragmentOne"
+            app:destination="@id/blankFragmentOne" />
+    </fragment>
 </navigation>

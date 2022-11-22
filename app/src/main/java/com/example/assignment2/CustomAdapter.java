@@ -2,6 +2,9 @@ package com.example.assignment2;
 
 //import android.support.annotation.NonNull;
 //import android.support.v7.widget.CardView;
+import static androidx.core.content.ContextCompat.startActivity;
+
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +12,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.zip.Inflater;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder>  {
 
@@ -46,8 +54,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_blank_four , parent ,false);
-
         MyViewHolder myViewHolder = new MyViewHolder(view);
+
+//        MyViewHolder myViewHolder = new MyViewHolder(view);
+
+//        ImageView imageView = vHolder.imageViewIcon;
 
         return myViewHolder;
     }
@@ -70,6 +81,19 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             imageView.setImageResource(dataSet.get(listPosition).getImage());
         }
 
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                BlankFragmentTwo blankFragmentTwo = new BlankFragmentTwo();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_blank_four,blankFragmentTwo).commit();
+                //TextView textViewName1 = view.findViewById(R.id.textView);
+                //ImageView imageView1 = view.findViewById(R.id.imageView2);
+                //textViewName1.setText("frjfrkfnrk");
+                //Navigation.findNavController(view).navigate(R.id.action_blankFragmentFour_to_blankFragmentTwo);
+            }
+        });
     }
 
     @Override

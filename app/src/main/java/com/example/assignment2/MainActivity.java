@@ -2,11 +2,13 @@ package com.example.assignment2;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import android.app.FragmentManager;
 import android.os.Bundle;
 
 import java.util.ArrayList;
@@ -55,12 +57,9 @@ public class MainActivity extends AppCompatActivity {
                     MyData.drawableArray[i]
             ));
         }
-
         addapter = new CustomAdapter(dataSet);
         recycleView.setAdapter(addapter);
-
     }
-
 }
 
 
