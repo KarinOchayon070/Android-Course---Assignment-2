@@ -9,14 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link BlankFragmentOne#newInstance} factory method to
+ * Use the {@link Fragment_characters_details#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BlankFragmentOne extends Fragment {
+public class Fragment_characters_details extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,7 +29,7 @@ public class BlankFragmentOne extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public BlankFragmentOne() {
+    public Fragment_characters_details() {
         // Required empty public constructor
     }
 
@@ -37,11 +39,11 @@ public class BlankFragmentOne extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment BlankFragmentOne.
+     * @return A new instance of fragment Fragment_characters_details.
      */
     // TODO: Rename and change types and number of parameters
-    public static BlankFragmentOne newInstance(String param1, String param2) {
-        BlankFragmentOne fragment = new BlankFragmentOne();
+    public static Fragment_characters_details newInstance(String param1, String param2) {
+        Fragment_characters_details fragment = new Fragment_characters_details();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -62,16 +64,20 @@ public class BlankFragmentOne extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_blank_one, container, false);
-        ImageButton [] buttonImages = {view.findViewById(R.id.ImageJoey), view.findViewById(R.id.ImageMonica), view.findViewById(R.id.ImageRachel)};
+        //return inflater.inflate(R.layout.fragment_characters_details, container, false);
+        View view = inflater.inflate(R.layout.fragment_characters_details, container, false);
 
+        TextView textViewNameSecPage = view.findViewById(R.id.textViewNameSecPage);
+        TextView textViewDescriptionSecPage = view.findViewById(R.id.textViewDescriptionSecPage);
+        ImageView ImageViewSecPage = view.findViewById(R.id.imageViewSecPage);
 
-        buttonImages[0].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Navigation.findNavController(view).navigate(R.id.action_blankFragmen_);
-            }
-        });
+        textViewNameSecPage.setText(getArguments().getString("name"));
+        textViewDescriptionSecPage.setText(getArguments().getString("fullDescription"));
+
+        String name = getArguments().getString("image");
+        System.out.println(name);
+        ImageViewSecPage.setImageResource(getResources().getIdentifier(name, "drawable", "com.example.assignment2"));
+
         return view;
     }
 }

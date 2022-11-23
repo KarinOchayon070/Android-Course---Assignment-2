@@ -1,30 +1,23 @@
 package com.example.assignment2;
 
-//import android.support.annotation.NonNull;
-//import android.support.v7.widget.CardView;
-import static androidx.core.content.ContextCompat.startActivity;
-
-import android.content.Intent;
+import android.annotation.SuppressLint;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder>  {
 
     private ArrayList<DataModel> dataSet;
+    View publicView;
 
     public CustomAdapter(ArrayList<DataModel> dataSet) {
         this.dataSet = dataSet;
@@ -33,33 +26,46 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     public static class MyViewHolder extends RecyclerView.ViewHolder  {
         CardView cardView;
         TextView textViewName;
-        TextView textViewVersion;
+        TextView textViewDescription;
+        TextView textViewID;
         ImageView imageViewIcon;
 
         public MyViewHolder (View itemView )
         {
             super(itemView);
-
             cardView = (CardView) itemView.findViewById(R.id.card_view);
             textViewName = ( TextView) itemView.findViewById(R.id.textViewName);
-            textViewVersion = ( TextView) itemView.findViewById(R.id.textViewVersion);
-            imageViewIcon = (ImageView) itemView.findViewById(R.id.imageView);
-
+            textViewDescription = ( TextView) itemView.findViewById(R.id.textViewDescription);
+            textViewID = (TextView) itemView.findViewById(R.id.textViewID);
+            imageViewIcon = (ImageView) itemView.findViewById(R.id.imageViewPhotoCast);
         }
-
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_blank_four , parent ,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cards_layout , parent ,false);
+        publicView = view;
+        CardView cardView = view.findViewById(R.id.card_view);
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                TextView name = view.findViewById(R.id.textViewName);
+                TextView description = view.findViewById(R.id.textViewDescription);
+                TextView ID = view.findViewById(R.id.textViewID);
+                String imgName = name.getText().toString().toLowerCase().split(" ")[0];
+                System.out.println(name.getText().toString());
+                System.out.println(description.getText().toString());
+                bundle.putString("name",name.getText().toString());
+                bundle.putString("fullDescription", dataSet.get(Integer.parseInt(ID.getText().toString())).getFullDescriptionArray());
+                System.out.println(dataSet.get(Integer.parseInt(ID.getText().toString())).getId());
+                bundle.putString("image", imgName);
+                Navigation.findNavController(view).navigate(R.id.action_fragment_main_characters_to_fragment_characters_details, bundle);
+            }
+        });
         MyViewHolder myViewHolder = new MyViewHolder(view);
-
-//        MyViewHolder myViewHolder = new MyViewHolder(view);
-
-//        ImageView imageView = vHolder.imageViewIcon;
-
         return myViewHolder;
     }
 
@@ -67,33 +73,20 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     public void onBindViewHolder(@NonNull MyViewHolder viewHolder,  int listPosition) {
 
         TextView textViewName = viewHolder.textViewName;
-        TextView textViewVersion = viewHolder.textViewVersion;
+        TextView textViewDescription = viewHolder.textViewDescription;
+        TextView ID = viewHolder.textViewID;
         ImageView imageView = viewHolder.imageViewIcon;
         CardView cardView = viewHolder.cardView;
 
-        if(textViewName.getText() != null){
-            textViewName.setText(dataSet.get(listPosition).getName());
-        }
-        if(textViewVersion.getText() != null){
-            textViewVersion.setText(dataSet.get(listPosition).getDescriptionArray());
-        }
-        if(imageView != null){
-            imageView.setImageResource(dataSet.get(listPosition).getImage());
-        }
+        textViewName.setText(dataSet.get(listPosition).getName());
+        textViewDescription.setText(dataSet.get(listPosition).getDescriptionArray());
+        imageView.setImageResource(dataSet.get(listPosition).getImage());
 
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                BlankFragmentTwo blankFragmentTwo = new BlankFragmentTwo();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_blank_four,blankFragmentTwo).commit();
-                //TextView textViewName1 = view.findViewById(R.id.textView);
-                //ImageView imageView1 = view.findViewById(R.id.imageView2);
-                //textViewName1.setText("frjfrkfnrk");
-                //Navigation.findNavController(view).navigate(R.id.action_blankFragmentFour_to_blankFragmentTwo);
-            }
-        });
+        System.out.println(dataSet.get(listPosition).getId());
+        int currentID = dataSet.get(listPosition).getId();
+        ID.setText((currentID)+"");
+
     }
 
     @Override

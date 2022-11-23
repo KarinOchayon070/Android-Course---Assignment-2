@@ -3,37 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/blankFragmentThree">
+    app:startDestination="@id/fragment_main_characters">
 
     <fragment
-        android:id="@+id/blankFragmentOne"
-        android:name="com.example.assignment2.BlankFragmentOne"
-        android:label="fragment_blank_one"
-        tools:layout="@layout/fragment_blank_one" />
-    <fragment
-        android:id="@+id/blankFragmentTwo"
-        android:name="com.example.assignment2.BlankFragmentTwo"
-        android:label="fragment_blank_two"
-        tools:layout="@layout/fragment_blank_two" />
-    <fragment
-        android:id="@+id/blankFragmentThree"
-        android:name="com.example.assignment2.BlankFragmentThree"
-        android:label="fragment_blank_three"
-        tools:layout="@layout/fragment_blank_three" >
+        android:id="@+id/fragment_main_characters"
+        android:name="com.example.assignment2.Fragment_main_characters"
+        android:label="fragment_main_characters"
+        tools:layout="@layout/fragment_main_characters" >
         <action
-            android:id="@+id/action_blankFragmentThree_to_blankFragmentTwo"
-            app:destination="@id/blankFragmentTwo" />
+            android:id="@+id/action_fragment_main_characters_to_fragment_characters_details"
+            app:destination="@id/fragment_characters_details" />
     </fragment>
     <fragment
-        android:id="@+id/blankFragmentFour"
-        android:name="com.example.assignment2.BlankFragmentFour"
-        android:label="fragment_blank_four"
-        tools:layout="@layout/fragment_blank_four" >
+        android:id="@+id/fragment_characters_details"
+        android:name="com.example.assignment2.Fragment_characters_details"
+        android:label="fragment_characters_details"
+        tools:layout="@layout/fragment_characters_details" >
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue="Null" />
+        <argument
+            android:name="description"
+            app:argType="string"
+            android:defaultValue="Null" />
+        <argument
+            android:name="fullDescription"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="Null" />
+        <argument
+            android:name="position"
+            app:argType="integer"
+            android:defaultValue="0" />
         <action
-            android:id="@+id/action_blankFragmentFour_to_blankFragmentTwo"
-            app:destination="@id/blankFragmentTwo" />
-        <action
-            android:id="@+id/action_blankFragmentFour_to_blankFragmentOne"
-            app:destination="@id/blankFragmentOne" />
+            android:id="@+id/action_fragment_characters_details_to_fragment_main_characters"
+            app:destination="@id/fragment_main_characters" />
     </fragment>
 </navigation>
